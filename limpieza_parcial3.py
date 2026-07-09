@@ -110,9 +110,11 @@ muestra_x = rango_valido.sample(50, random_state=42).reset_index(drop=True)
 print(f"Registros_X reales seleccionados: {len(muestra_x)}")
 
 # Asignar Sector y Vector_Ataque de forma balanceada (mismo patrón que semilla: 26 Fin/24 Sal, 25/25 tipo)
-# Diseño balanceado exacto para ANOVA de dos vías: 4 celdas de 12-13 cada una (total 50)
-celdas = (["Financiero-Ransomware"]*13 + ["Financiero-Malware"]*12 +
-          ["Salud-Ransomware"]*12 + ["Salud-Malware"]*13)
+# Diseño balanceado EXACTO para ANOVA de dos vías: 25 registros por celda (100 total)
+# La semilla ya trae: Fin/Ransom=12, Fin/Malware=14, Salud/Ransom=13, Salud/Malware=11
+# Externos deben completar cada celda hasta 25:
+celdas = (["Financiero-Ransomware"]*13 + ["Financiero-Malware"]*11 +
+          ["Salud-Ransomware"]*12 + ["Salud-Malware"]*14)
 np.random.shuffle(celdas)
 muestra_x["Sector"] = [c.split("-")[0] for c in celdas]
 muestra_x["Vector_Ataque"] = [c.split("-")[1] for c in celdas]
