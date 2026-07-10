@@ -15,6 +15,19 @@ Interpretación: líneas aproximadamente paralelas indican ausencia de
 interacción (el efecto de un factor es consistente en todos los niveles
 del otro factor); líneas que se cruzan o divergen marcadamente indicarían
 interacción significativa.
+
+Librerías: pandas, numpy, matplotlib
+
+Justificación de cada librería:
+  - pandas:     carga del dataset y groupby().unstack() para obtener la
+                tabla de medias por combinación Sector x Vector_Ataque.
+  - numpy:      generación del arreglo de posiciones en el eje X (arange)
+                para ubicar los dos sectores en el gráfico.
+  - matplotlib: única librería de graficación necesaria; se usa en modo
+                blanco y negro con líneas de estilo distinto (sólida/
+                discontinua) para diferenciar Ransomware de Malware sin
+                depender del color, replicando el criterio de reportes
+                anteriores del curso (blanco y negro, sin decoración).
 """
 
 import pandas as pd
