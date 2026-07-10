@@ -15,6 +15,20 @@ hipótesis que STATDISK no grafica directamente:
 Nota: STATDISK no ofrece gráfica para pruebas de regresión con una sola
 variable predictora ni para ANOVA de dos vías, por lo que se generan de
 forma independiente en Python, replicando su estilo visual estándar.
+
+Librerías: numpy, matplotlib, scipy
+
+Justificación de cada librería:
+  - numpy:      construcción de los arreglos de puntos (linspace) sobre
+                los que se evalúan las densidades t y F para dibujar la
+                curva completa de cada distribución.
+  - matplotlib: dibuja la curva, las líneas verticales de valores críticos
+                (rojo) y estadístico de prueba (azul), replicando el
+                formato exacto de las capturas de STATDISK usadas en
+                exámenes anteriores del curso.
+  - scipy.stats: provee las funciones de densidad de probabilidad t.pdf
+                y f.pdf, y los cuantiles t.ppf/f.ppf necesarios para
+                ubicar los valores críticos exactos de cada prueba.
 """
 
 import numpy as np
