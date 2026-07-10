@@ -26,6 +26,19 @@ Metodología de construcción de Costo_Y en los externos:
 
   Se añade variación aleatoria (ruido gaussiano, sd calibrado a partir del error
   estándar de la regresión de la semilla) para no generar una línea perfecta.
+
+Librerías utilizadas y justificación de cada una:
+  - pandas:  manipulación tabular de los datos (semilla, dataset HIBP,
+             filtros, agrupaciones y exportación a CSV). Es el estándar
+             de la industria para este tipo de tareas y permite operaciones
+             vectorizadas sin loops explícitos, reduciendo errores.
+  - numpy:   generación de números aleatorios reproducibles (semilla fija
+             np.random.seed(42)) para el muestreo balanceado y el ruido
+             gaussiano de Costo_Y; y operaciones numéricas vectorizadas
+             (percentiles, medias) más eficientes que Python puro.
+  - scipy:   cálculo de la correlación de Pearson y la regresión lineal de
+             referencia de la semilla (stats.pearsonr, stats.linregress),
+             necesarios para calibrar la fórmula de Costo_Y en la Fase 3.
 """
 
 import pandas as pd
