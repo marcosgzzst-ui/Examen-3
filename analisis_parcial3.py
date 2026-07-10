@@ -12,6 +12,22 @@ resultados obtenidos en STATDISK v13, como verificación cruzada:
   Bloque 3 — ANOVA de dos vías con replicación (Sector x Vector_Ataque)
 
 Librerías: pandas, numpy, scipy, statsmodels
+
+Justificación de cada librería:
+  - pandas:      carga y agrupación del dataset limpio (groupby por Sector
+                 y Vector_Ataque para las medias del ANOVA).
+  - numpy:       operaciones numéricas vectorizadas (medias, raíces,
+                 percentiles) usadas en el cálculo manual de errores
+                 estándar y del Intervalo de Predicción.
+  - scipy.stats: distribución t (t.cdf, t.ppf) para calcular manualmente
+                 el valor p y t crítico de la prueba de beta0, ya que
+                 STATDISK no la reporta por separado con un solo predictor.
+  - statsmodels: ajusta el modelo OLS (mínimos cuadrados ordinarios) que
+                 reproduce de forma independiente la regresión de STATDISK,
+                 y calcula el ANOVA de dos vías (anova_lm) con la
+                 descomposición de suma de cuadrados Tipo II — verificación
+                 cruzada exigida por el examen para todo lo calculado
+                 manualmente fuera de STATDISK.
 """
 
 import pandas as pd
